@@ -59,8 +59,14 @@
                 </table>
             </div>
         </div>    
+        
+      
+        
+        
                <div class="container">
         <div class="row">
+            
+            
             <h3>Data View from Multiple Tables</h3>
         </div>
             
@@ -74,6 +80,7 @@
                             <th>Project Start Date</th>
                             <th>Client</th>
                             <th>Hourly Usage Rate</th>
+                           
                             
                         </tr>
                     </thead>
@@ -82,20 +89,27 @@
                         <?php
                            
                             $pdo = Database::connect();
-                            $sql= 'SELECT resources.Resources_Name, project.Project_Name, project.Project_Startdate, client.Client_Name, project_has_resources.hourly_Usage_Rate
-                                FROM project, client, resources, project_has_resources
-                                WHERE project.Client_Client_ID = client.Client_ID
-                                AND project.Project_ID = project_has_resources.Project_Project_ID
-                                AND project_has_resources.Resources_Resources_ID = resources.Resources_ID
-                                ORDER BY project.Project_Name DESC';
+                            
+                            $sql= 'SELECT project.Project_Name, project.Project_Startdate, client.Client_Name, resources.Resources_Name, project_has_resources.hourly_Usage_Rate 
+                                    FROM project, client, resources, project_has_resources 
+                                    WHERE project.Client_Client_ID = client.Client_ID 
+                                    AND project.Project_ID = project_has_resources.Project_Project_ID 
+                                    AND project_has_resources.Resources_Resources_ID = resources.Resources_ID 
+                                    ORDER BY resources.Resources_Name LIMIT 0, 1000';
                                 foreach ($pdo->query($sql) as $row) {
                                 echo '<tr>';
-                                echo '<td>'. $row['resources.Resources_Name'] . '</td>';
-                                echo '<td>'. $row['project.Project_Name'] . '</td>';
-                                echo '<td>'. $row['project.Project_Startdate'] . '</td>';
-                                echo '<td>'. $row['client.Client_Name'] . '</td>';
-                                echo '<td>'. $row['project_has_resources.hourly_Usage_Rate'] . '</td>';
-                                echo '<td width=250></td>';
+                                echo '<td>'. $row['Resources_Name'] . '</td>';
+                                echo '<td>'. $row['Project_Name'] . '</td>';
+                                echo '<td>'. $row['Project_Startdate'] . '</td>';
+                                echo '<td>'. $row['Client_Name'] . '</td>';
+                                echo '<td>'. $row['hourly_Usage_Rate'] . '</td>';
+                                //echo '<td width=200>';
+                                //echo '<a class="btn btn-warning" href="projectread.php?Client_ID='.$row['Resources_ID'].'">Read</a>';
+                                //echo ' ';
+                                //echo '<a class="btn btn-success" href="update.php?Client_ID='.$row['Client_ID'].'">Update</a>';
+                                //echo ' ';
+                                //echo '<a class="btn btn-danger" href="delete.php?Client_ID='.$row['Client_ID'].'">Delete</a>';
+                                //echo '</td>';
                                 echo '</tr>';
                                 }
                         Database::disconnect();
