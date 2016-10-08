@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <!--This project was created with the help of several tutorials--including, but not limited to Startutorial.com -->
     <link   href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
+ 
 </head>
  
-<body>
+<body class="background">
     <?php
      
     require 'database.php';
@@ -89,7 +92,7 @@
               $q->execute(
                
                 array(
-                  $Client_Name,$Client_Address,$Client_Contact,$Client_Phone,$Client_Postcode
+                                   $Client_Name,$Client_Address,$Client_Contact,$Client_Phone,$Client_Postcode
                 )
               )
             )
