@@ -1,21 +1,21 @@
-
- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    
+        <!--This project was created with the help of several tutorials--including, but not limited to Startutorial.com -->
     <link   href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
+
     
 </head>
  
-<body>
+<body class="background">
     
     <div class="container">
         <div class="span10 offset1">
             
-            <div class="row">
+            <div class="row background">
                 <h3>Read a Customer</h3>
             </div>
   <?php
