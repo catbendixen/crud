@@ -26,12 +26,15 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+        <!--This project was created with the help of several tutorials--including, but not limited to Startutorial.com -->
     <link   href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
+
 </head>
  
-<body>
-    <div class="container">
+<body class="background">
+    <div class="container background">
      
                 <div class="span10 offset1">
                     <div class="row">
