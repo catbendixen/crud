@@ -1,106 +1,17 @@
-<?php
-    require 'database.php';
- 
-    $id = null;
-    if ( !empty($_GET['Client_ID'])) {
-        $id = $_REQUEST['Client_ID'];
-    }
-     
-    if ( null==$id ) {
-        header("Location: index.php");
-    }
-     
-    if ( !empty($_POST)) {
-        // keep track validation errors
-        $nameError = null;
-        $addressError = null;
-        $contactError = null;
-        $phoneError = null;
-        $postcodeError = null;
-         
-        // keep track post values
-        $Client_Name = $_POST['Client_Name'];
-        $Client_Address = $_POST['Client_Address'];
-        $Client_Contact = $_POST['Client_Contact'];
-        $Client_Phone = $_POST['Client_Phone'];
-        $Client_Postcode = $_POST['Client_Postcode'];
-        
-         
-        // validate input
-        $valid = true;
-        if (empty($Client_Name)) {
-            $nameError = 'Please enter Name';
-            $valid = false;
-        }
-         
-        if (empty($Client_Address)) {
-            $addressError = 'Please enter Address';
-            $valid = false;
-        }
-         
-        if (empty($Client_Contact)) {
-            $contactError = 'Please enter the Contact Person';
-            $valid = false;
-        }
-        
-        if (empty($Client_Phone)) {
-            $phoneError = 'Please enter the Telephone number';
-            $valid = false;
-        }
-        
-        if (empty($Client_Postcode)) {
-            $postcodeError = 'Please enter the Postcode';
-            $valid = false;
-        }
-        
-        // update data
-        if ($valid) {
-            $pdo = Database::connect();
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE client set Client_Name = ?, Client_Address = ?, Client_Contact = ?, Client_Phone = ?, Client_Postcode = ? WHERE Client_ID = ?";
-            $q = $pdo->prepare($sql);
-            $q->execute(array($Client_Name,$Client_Address,$Client_Contact,$Client_Phone,$Client_Postcode,$id));
-            Database::disconnect();
-            header("Location: index.php");
-        }
-    } else {
-        $pdo = Database::connect();
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM client where Client_ID = ?";
-        $q = $pdo->prepare($sql);
-        $q->execute(array($id));
-        $data = $q->fetch(PDO::FETCH_ASSOC);
-        $Client_Name = $data['Client_Name'];
-        $Client_Address = $data['Client_Address'];
-        $Client_Contact = $data['Client_Contact'];
-        $Client_Phone = $data['Client_Phone'];
-        $Client_Postcode = $data['Client_Postcode'];
-        Database::disconnect();
-    }
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-        <!--This project was created with the help of several tutorials--including, but not limited to Startutorial.com -->
-    <link   href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <script src="js/bootstrap.min.js"></script>
- 
 </head>
  
 <body class="background">
     
     <div class="container">
      
-                <div class="span10 offset1">
+                <div class="span12 offset1">
     				<div class="row background">
 		    			<h3>Update a Customer</h3>
 		    		</div>
              
                     <form class="form-horizontal" action="update.php?Client_ID=<?php echo $id?>" method="post">
-                      <div class="control-group <?php echo !empty($nameError)?'error':'';?>">
-                        <label class="control-label">Name</label>
+                      <div class="control-group warning <?php echo !empty($nameError)?'error':'';?>">
+                        <label class="control-label warning">Name</label>
                         <div class="controls">
                             <input name="Client_Name" type="text"  placeholder="Name" value="<?php echo !empty($Client_Name)?$Client_Name:'';?>">
                             <?php if (!empty($nameError)): ?>
@@ -108,8 +19,8 @@
                             <?php endif; ?>
                         </div>
                       </div>
-                      <div class="control-group <?php echo !empty($addressError)?'error':'';?>">
-                        <label class="control-label">Address</label>
+                      <div class="control-group warning<?php echo !empty($addressError)?'error':'';?>">
+                        <label class="control-label warning">Address</label>
                         <div class="controls">
                             <input name="Client_Address" type="text" placeholder="Address" value="<?php echo !empty($Client_Address)?$Client_Address:'';?>">
                             <?php if (!empty($addressError)): ?>
@@ -117,8 +28,8 @@
                             <?php endif;?>
                         </div>
                       </div>
-                      <div class="control-group <?php echo !empty($contactError)?'error':'';?>">
-                        <label class="control-label">Contact Person</label>
+                      <div class="control-group warning <?php echo !empty($contactError)?'error':'';?>">
+                        <label class="control-label warning">Contact Person</label>
                         <div class="controls">
                             <input name="Client_Contact" type="text"  placeholder="Contact Person" value="<?php echo !empty($Client_Contact)?$Client_Contact:'';?>">
                             <?php if (!empty($contactError)): ?>
@@ -126,8 +37,8 @@
                             <?php endif;?>
                         </div>
                       </div>
-                        <div class="control-group <?php echo !empty($phoneError)?'error':'';?>">
-                        <label class="control-label">Phone</label>
+                        <div class="control-group warning <?php echo !empty($phoneError)?'error':'';?>">
+                        <label class="control-label warning">Phone</label>
                         <div class="controls">
                             <input name="Client_Phone" type="text"  placeholder="Phone" value="<?php echo !empty($Client_Phone)?$Client_Phone:'';?>">
                             <?php if (!empty($phoneError)): ?>
@@ -135,8 +46,8 @@
                             <?php endif; ?>
                         </div>
                       </div>
-                      <div class="control-group <?php echo !empty($postcodeError)?'error':'';?>">
-                        <label class="control-label">Postcode</label>
+                      <div class="control-group warning <?php echo !empty($postcodeError)?'error':'';?>">
+                        <label class="control-label warning">Postcode</label>
                         <div class="controls">
                             <input name="Client_Postcode" type="text"  placeholder="Postcode" value="<?php echo !empty($Client_Postcode)?$Client_Postcode:'';?>">
                             <?php if (!empty($postcodeError)): ?>
