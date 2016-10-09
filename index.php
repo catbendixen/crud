@@ -21,7 +21,7 @@
         </div>
             
         <div class="row">
-            <p><a href="create.php" class="btn btn-success">Create</a></p>
+            <p><a href="create.php" class="btn btn-success">Create a New Client</a></p>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
