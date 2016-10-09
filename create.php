@@ -97,11 +97,11 @@
               )
             )
             {
-              echo "Det lykkedes at indsætte i databasen";
+              echo "Successfully added to database";
             }
             else
             {
-              echo "fejl ved insert";
+              echo "Problem with the addition";
             }
             
             
@@ -109,15 +109,17 @@
             
         
            
-        } else {
-            
-          echo "This is not valid";
-          
-        }
+        } 
         
-    } else {
+        //else {
+            
+        //  echo "This is not valid";
+          
+        //}
+        
+    //} else {
     
-      echo "Her ender vi";
+      //echo "Her ender vi";
       
     }
 ?>
@@ -129,7 +131,7 @@
                     </div>
              
                     <form class="form-horizontal" action="create.php" method="post">
-                      <div class="control-group <?php echo !empty($nameError)?'error':'';?>">
+                      <div class="control-group warning <?php echo !empty($nameError)?'error':'';?>">
                         <label class="control-label">Name</label>
                         <div class="controls">
                             <input name="Client_Name" type="text"  placeholder="Name" value="<?php echo !empty($Client_Name)?$Client_Name:'';?>">
@@ -138,7 +140,7 @@
                             <?php endif; ?>
                         </div>
                       </div>
-                      <div class="control-group <?php echo !empty($addressError)?'error':'';?>">
+                      <div class="control-group warning <?php echo !empty($addressError)?'error':'';?>">
                         <label class="control-label">Address</label>
                         <div class="controls">
                             <input name="Client_Address" type="text" placeholder="Address" value="<?php echo !empty($Client_Address)?$Client_Address:'';?>">
@@ -147,7 +149,7 @@
                             <?php endif;?>
                         </div>
                       </div>
-                      <div class="control-group <?php echo !empty($contactError)?'error':'';?>">
+                      <div class="control-group warning <?php echo !empty($contactError)?'error':'';?>">
                         <label class="control-label">Contact Person</label>
                         <div class="controls">
                             <input name="Client_Contact" type="text"  placeholder="Contact Person" value="<?php echo !empty($Client_Contact)?$Client_Contact:'';?>">
@@ -156,7 +158,7 @@
                             <?php endif;?>
                         </div>
                       </div>
-                        <div class="control-group <?php echo !empty($phoneError)?'error':'';?>">
+                        <div class="control-group warning <?php echo !empty($phoneError)?'error':'';?>">
                         <label class="control-label">Phone</label>
                         <div class="controls">
                             <input name="Client_Phone" type="text"  placeholder="Phone" value="<?php echo !empty($Client_Phone)?$Client_Phone:'';?>">
@@ -165,7 +167,7 @@
                             <?php endif; ?>
                         </div>
                       </div>
-                     <div class="control-group <?php echo !empty($postcodeError)?'error':'';?>">
+                     <div class="control-group warning <?php echo !empty($postcodeError)?'error':'';?>">
                         <label class="control-label">Postcode</label>
                         <div class="controls">
                             <input name="Client_Postcode" type="text"  placeholder="Postcode" value="<?php echo !empty($Client_Postcode)?$Client_Postcode:'';?>">
