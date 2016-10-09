@@ -125,14 +125,14 @@
 ?>
     <div class="container">
      
-                <div class="span10 offset1">
+                <div class="span12 offset1">
                     <div class="row">
                         <h3>Create a Customer</h3>
                     </div>
              
                     <form class="form-horizontal" action="create.php" method="post">
                       <div class="control-group warning <?php echo !empty($nameError)?'error':'';?>">
-                        <label class="control-label">Name</label>
+                        <label class="control-label warning">Name</label>
                         <div class="controls">
                             <input name="Client_Name" type="text"  placeholder="Name" value="<?php echo !empty($Client_Name)?$Client_Name:'';?>">
                             <?php if (!empty($nameError)): ?>
@@ -141,7 +141,7 @@
                         </div>
                       </div>
                       <div class="control-group warning <?php echo !empty($addressError)?'error':'';?>">
-                        <label class="control-label">Address</label>
+                        <label class="control-label warning">Address</label>
                         <div class="controls">
                             <input name="Client_Address" type="text" placeholder="Address" value="<?php echo !empty($Client_Address)?$Client_Address:'';?>">
                             <?php if (!empty($addressError)): ?>
@@ -150,7 +150,7 @@
                         </div>
                       </div>
                       <div class="control-group warning <?php echo !empty($contactError)?'error':'';?>">
-                        <label class="control-label">Contact Person</label>
+                        <label class="control-label warning">Contact Person</label>
                         <div class="controls">
                             <input name="Client_Contact" type="text"  placeholder="Contact Person" value="<?php echo !empty($Client_Contact)?$Client_Contact:'';?>">
                             <?php if (!empty($contactError)): ?>
@@ -159,7 +159,7 @@
                         </div>
                       </div>
                         <div class="control-group warning <?php echo !empty($phoneError)?'error':'';?>">
-                        <label class="control-label">Phone</label>
+                        <label class="control-label warning">Phone</label>
                         <div class="controls">
                             <input name="Client_Phone" type="text"  placeholder="Phone" value="<?php echo !empty($Client_Phone)?$Client_Phone:'';?>">
                             <?php if (!empty($phoneError)): ?>
@@ -168,7 +168,7 @@
                         </div>
                       </div>
                      <div class="control-group warning <?php echo !empty($postcodeError)?'error':'';?>">
-                        <label class="control-label">Postcode</label>
+                        <label class="control-label warning">Postcode</label>
                         <div class="controls">
                             <input name="Client_Postcode" type="text"  placeholder="Postcode" value="<?php echo !empty($Client_Postcode)?$Client_Postcode:'';?>">
                             <?php if (!empty($postcodeError)): ?>
